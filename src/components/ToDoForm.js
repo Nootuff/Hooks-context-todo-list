@@ -6,16 +6,18 @@ import { ToDosContext } from "../contexts/ToDosContext"
 
 function ToDoForm(props) {
     const [value, handleChange, reset] = useInputState(""); //The empty string is "value" in useInputState. 
-const {addTodo} = useContext(ToDosContext);
+
+    const { dispatch } = useContext(ToDosContext);
 
     return (
         <Paper style={{ margin: "1rem 0", padding: "0 1rem" }}>
-            <form onSubmit={(event)=>{ //This function adds the entered todo to the list. 
+            <form onSubmit={(event) => { //This function adds the entered todo to the list. 
                 event.preventDefault(); //preventDefault prevents the default form behaviour of refreshing the page. 
-                addTodo(value);
+                dispatch({ type: "ADD", task: value /*The value from the form inputted by user*/ })
+
                 reset(); //This part then resets the form so the text field is cleared and empty again. 
             }}>
-            <TextField value={value} onChange={handleChange} variant="standard" margin="normal" label="Add New ToDo" fullWidth/>
+                <TextField value={value} onChange={handleChange} variant="standard" margin="normal" label="Add New ToDo" fullWidth />
             </form>
         </Paper>
     );

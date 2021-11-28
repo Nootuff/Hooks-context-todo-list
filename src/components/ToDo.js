@@ -17,7 +17,7 @@ import { ToDosContext } from "../contexts/ToDosContext";
 
 function ToDo({ task, completed, id }) { //You can do this instead of having props in these brackets and then putting props.task or whatever down below.
 
-    const { removeTodo, toggleComplete } = useContext(ToDosContext);
+    const { dispatch } = useContext(ToDosContext);
 
     const [isEditing, toggle] = useToggleState(false); //Imported at the top of this document. This const is to do with showing the edit form below. isEditing is set to false initially. Toggle is a function imported from useToggleState, here being used as the function that sets the value of isEditing. 
 
@@ -25,7 +25,7 @@ function ToDo({ task, completed, id }) { //You can do this instead of having pro
         <ListItem style={{ height: "64px" /*The height is 64px because this is the height the editing box is so the overall height of the todo does not change when the editing field is opened. */ }}>
             {isEditing ? (
                 <EditTodoForm
-                   
+
                     id={id /*Passes the id imported in the brackets above. */}
                     task={task}
                     toggleEdit={toggle /*Remember toggle is imported through useToggleState*/}
@@ -35,13 +35,15 @@ function ToDo({ task, completed, id }) { //You can do this instead of having pro
                     <Checkbox
                         tabIndex={-1}
                         checked={completed}
-                        onClick={() => toggleComplete(id)}
+                        onClick={() => dispatch({ type: "TOGGLECOMPLETE", id: id })}
                     />
-                    <ListItemText style={{ textDecoration: completed ? "line-through" : "none" /*Ternary operator*/ }}>
+                    <ListItemText style={{ textDecoration: completed ? "line-through" : "none"  /*Ternary operator*/ }}>
                         {task} {/*Notice you don't need the props.task because this prop is imported directly from above in the function activation brackets.*/}
                     </ListItemText>
                     <ListItemSecondaryAction>
-                        <IconButton aria-label="Delete" onClick={() => removeTodo(id)} > {/*To use these icons you must install them with npm i @mui/icons-material*/}
+                        <IconButton
+                            aria-label="Delete"
+                            onClick={() => dispatch({ type: "REMOVE", id: id })} > {/*To use these icons you must install them with npm i @mui/icons-material*/}
                             <DeleteIcon />
                         </IconButton>
                         <IconButton aria-label="Edit" onClick={toggle} > {/*These labels are for users using a screen reader who can't see the little image*/}

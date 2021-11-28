@@ -1,5 +1,5 @@
-import { TouchApp } from "@mui/icons-material";
-import React, { createContext } from "react";
+import React, { createContext, useReducer } from "react";
+import reducer from "../reducers/toDoReducer"
 import useToDoState from "../hooks/useToDoState";
 
 const defaultToDos = [
@@ -10,9 +10,11 @@ const defaultToDos = [
 export const ToDosContext = createContext();
 
 export function ToDosProvider(props) {
-    const toDoStuff = useToDoState(defaultToDos);
+    const [todos, dispatch] = useReducer(reducer, defaultToDos); //todos is the state, dispatch the function that modifies it. In this case, dispatch is the "reducer" function from toDoReducer, when you want to use the reducer function in your components you will need to call "dispatch". 
+
+    //const toDoStuff = useToDoState(defaultToDos);
     return(
-        <ToDosContext.Provider value={toDoStuff}>
+        <ToDosContext.Provider value={{ todos, dispatch }}>
             {props.children}
         </ToDosContext.Provider>
     )

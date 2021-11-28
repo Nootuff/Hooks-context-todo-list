@@ -4,13 +4,13 @@ import TextField from '@mui/material/TextField';
 import { ToDosContext } from "../contexts/ToDosContext";
 
 function EditTodoForm({ id, task, toggleEdit }) {
-    const { editTodo } = useContext( ToDosContext );
+    const { dispatch } = useContext( ToDosContext );
     const [value, handleChange, reset] = useInputState(task); //The 3 functions from useInputState all defined in that file, note the order is the same as in that file. value is set to "task" which is the text of the todo which is passed in in the first brackets. 
     return (
         <form
             onSubmit={(event) => {
                 event.preventDefault(); //Prvents from from reloading the page as is normal on form submission.
-                editTodo(id, value);
+            dispatch({ type: "EDIT", id: id, newTask: value /*The value passed to reducer as "newTask" is value, the text the user has inputted.*/ });
                 reset(); //Imported from useInputState.
                 toggleEdit(); //Activates the function imported from ToDo that is defined in useToggleState. On submit it is activated setting isEditing to false again. 
             }}

@@ -1,3 +1,3 @@
 # React Hooks ToDo App
 
-Simple todo app built using hooks.
+Simple React todo app built using hooks and context to handle state.

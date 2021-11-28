@@ -21,6 +21,7 @@ function ToDoList() {
                             id={todo.id}
                             task={todo.task}
                             key={todo.id}
+                            completed={todo.completed}
                              
                         />
                         {index < todos.length-1 ? <Divider /> : null /*Ternary operator, if index is less than props.toDoData.length-1, render a divider, else render nothing. This prevents the last todo having a deivider under it to make this look neater. Index is a new number generated with each todo? Not sure. */}
