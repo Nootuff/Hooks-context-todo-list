@@ -13,11 +13,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
 
-import { ToDosContext } from "../contexts/ToDosContext";
+import { DispatchContext } from "../contexts/ToDosContext";
 
 function ToDo({ task, completed, id }) { //You can do this instead of having props in these brackets and then putting props.task or whatever down below.
 
-    const { dispatch } = useContext(ToDosContext);
+    const { dispatch } = useContext(DispatchContext);
 
     const [isEditing, toggle] = useToggleState(false); //Imported at the top of this document. This const is to do with showing the edit form below. isEditing is set to false initially. Toggle is a function imported from useToggleState, here being used as the function that sets the value of isEditing. 
 
@@ -56,4 +56,4 @@ function ToDo({ task, completed, id }) { //You can do this instead of having pro
     );
 }
 
-export default ToDo;
+export default ToDo; //Memo is something you imported from react, using it means that when a todo is added or updated only that todo will render / re-render, without memo, 

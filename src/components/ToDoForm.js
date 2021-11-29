@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import useInputState from "../hooks/useInputState"; //make sure this is right. 
-import { ToDosContext } from "../contexts/ToDosContext"
+import { DispatchContext } from "../contexts/ToDosContext"
 
 function ToDoForm(props) {
     const [value, handleChange, reset] = useInputState(""); //The empty string is "value" in useInputState. 
 
-    const { dispatch } = useContext(ToDosContext);
+    const { dispatch } = useContext(DispatchContext);
 
     return (
         <Paper style={{ margin: "1rem 0", padding: "0 1rem" }}>

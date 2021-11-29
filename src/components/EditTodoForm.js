@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import useInputState from "../hooks/useInputState"
 import TextField from '@mui/material/TextField';
-import { ToDosContext } from "../contexts/ToDosContext";
+import { DispatchContext } from "../contexts/ToDosContext";
 
 function EditTodoForm({ id, task, toggleEdit }) {
-    const { dispatch } = useContext( ToDosContext );
+    const { dispatch } = useContext( DispatchContext );
     const [value, handleChange, reset] = useInputState(task); //The 3 functions from useInputState all defined in that file, note the order is the same as in that file. value is set to "task" which is the text of the todo which is passed in in the first brackets. 
     return (
         <form

@@ -1,3 +1,5 @@
+/* None of this is used anymore
+
 import React, { useEffect, useState } from "react";
 
 function useLocalStorageState(key, defaultValue) {// key and defaultValue are this function's parameters. 
@@ -18,3 +20,5 @@ function useLocalStorageState(key, defaultValue) {// key and defaultValue are th
 }
 
 export default useLocalStorageState;
+
+*/

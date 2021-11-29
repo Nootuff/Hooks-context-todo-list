@@ -1,3 +1,5 @@
+    /* None of this is  used anymore, all functionality moved to reducer in the reducers folder. 
+
 import { v4 as uuidv4 } from 'uuid';
 import useLocalStorageState from "./useLocalStorageState" //Imports the function from useLocalStorageState. 
 
@@ -6,7 +8,7 @@ function useToDoState(initialTodos){ //initialTodos is a parameter. And in ToDoA
 
     const [todos, setTodos] = useLocalStorageState("contexttodos", initialTodos); //The value of todos is set to whatever the function in useLocalStorageState is producing. "contexttodos" is the key argument in the function. "contexttodos", initialTodos are arguments being passed in to the useLocalStorageState function.
 
-    /* None of these are used anymore, all functionality moved to reducer in the reducers folder. 
+
     
     return { //return an object, all these function names are the keys with the values being the body of the functions.
         todos, //The value of the todos above
@@ -35,7 +37,9 @@ function useToDoState(initialTodos){ //initialTodos is a parameter. And in ToDoA
             setTodos(updatedTodos);
         }
     }
-    */
+
 }
 
 export default useToDoState;
+
+    */
